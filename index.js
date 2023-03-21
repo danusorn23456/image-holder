@@ -1,7 +1,8 @@
 //#region import
 const express = require("express");
 const cors = require("cors");
-const imageApi = require("./api/image")
+const path = require('path');
+const imageApi = require("./api/image");
 //#endregion
 
 //#region config
