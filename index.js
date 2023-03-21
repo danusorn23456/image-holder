@@ -5,8 +5,11 @@ const imageApi = require("./api/image")
 //#endregion
 
 //#region config
+
 const app = express();
 const port = 8000;
+
+app.use(express.json({ extended: false }));
 app.use(express.static('public'));
 app.use(cors());
 //#endregion
