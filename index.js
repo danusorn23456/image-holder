@@ -58,7 +58,7 @@ app.get("/api/image/", (req, res) => {
     }).map(file => {
       return {
         filename: file,
-        src: `${req.protocol}://${req.hostname}:${port}/public/${file}`
+        src: `${req.protocol}://${req.hostname}:${port}/static/${file}`
       };
     });
     res.send(images);
