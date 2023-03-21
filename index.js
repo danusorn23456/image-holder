@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to image holder api')
 })
 
-app.use("/api/image", apiImage);
+app.use("/image", apiImage);
 //#endregion
 
 //#region final command

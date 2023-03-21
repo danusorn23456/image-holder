@@ -66,7 +66,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/api/image/uploads", (req, res) => {
+router.post("/uploads", (req, res) => {
   multi_upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
       // A Multer error occurred when uploading.
