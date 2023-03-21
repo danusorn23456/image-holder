@@ -7,7 +7,7 @@ const multer = require('multer')
 //#region multer setup
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './public/images')
+        cb(null, './public')
     },
     filename: (req, file, cb) => {
         cb(null,file.originalname)}
@@ -33,7 +33,7 @@ const multi_upload = multer({
 const router = express.Router()
 
 router.get("/", (req, res) => {
-    const directoryPath = path.join(__dirname, "/public/images");
+    const directoryPath = path.join(__dirname, "/public");
     fs.readdir(directoryPath, (err, files) => {
       if (err) {
         return res.status(500).send('Error getting images.');
@@ -44,7 +44,7 @@ router.get("/", (req, res) => {
       }).map(file => {
         return {
           filename: file,
-          src: `${req.protocol}://${req.hostname}:${port}/public/images/${file}`
+          src: `${req.protocol}://${req.hostname}:${port}/public/${file}`
         };
       });
       res.send(images);
