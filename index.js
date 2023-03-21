@@ -10,6 +10,9 @@ const port = 8000;
 app.use(express.static('public'));
 app.use(cors());
 //#endregion
+app.get('/', (req, res) => {
+  res.send('Welcome to image holder api')
+})
 
 app.use("/api/image",imageApi)
 
