@@ -9,6 +9,7 @@ const imageApi = require("./api/image")
 const app = express();
 const port = 8000;
 
+app.use('/static', express.static(path.join(__dirname + '/public/images')));
 app.use(express.json({ extended: false }));
 app.use(express.static('public'));
 app.use(cors());
