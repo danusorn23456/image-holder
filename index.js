@@ -4,7 +4,6 @@ const cors = require("cors");
 const path = require('path');
 const fs = require('fs');
 const multer = require('multer')
-const imageApi = require("./api/image");
 //#endregion
 
 //#region config
