@@ -46,7 +46,7 @@ const multi_upload = multer({
 }).array('uploadedImages', 12)
 //#endregion
 
-app.get("api/image/", (req, res) => {
+app.get("/api/image/", (req, res) => {
   const directoryPath = path.join(__dirname, "/public");
   fs.readdir(directoryPath, (err, files) => {
     if (err) {
@@ -65,7 +65,7 @@ app.get("api/image/", (req, res) => {
   });
 })
 
-app.post("api/image/uploads",(req,res)=>{
+app.post("/api/image/uploads",(req,res)=>{
     multi_upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
             // A Multer error occurred when uploading.
