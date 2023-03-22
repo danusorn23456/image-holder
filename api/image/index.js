@@ -5,11 +5,6 @@ const fs = require("fs");
 const multer = require("multer");
 //#endregion
 
-//#region enum
-const LEAF_PATH = "/public";
-const ROOT_PATH = path.join(__dirname, LEAF_PATH);
-//#endregion
-
 //#region var
 const router = express.Router();
 //#endregion
@@ -17,7 +12,7 @@ const router = express.Router();
 //#region multer setup
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, LEAF_PATH);
+    cb(null, './public');
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
@@ -93,7 +88,12 @@ router.post("/uploads", (req, res) => {
       return;
     }
     // Everything went fine.
-    res.status(200).end("Your files uploaded.");
+    const uploadResult = req.files.map(file => ({
+        filename: file.filename,
+        src: `${req.protocol}://${req.hostname}/static/${file.filename}`,
+    }))
+
+    res.status(200).json(uploadResult);
   });
 });
 //#endregion
